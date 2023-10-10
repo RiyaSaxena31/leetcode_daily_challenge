@@ -1,0 +1,12 @@
+#USING BINARY SEARCH ON RANGE OF ANSWER
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        n = len(nums)
+        nums = list(set(nums))
+        nums.sort()
+        res = r = 0
+        for l in range(len(nums)):
+            while r < len(nums) and nums[r] <= nums[l] + n - 1:
+                r += 1
+            res = max(res, r - l)
+        return n - res
